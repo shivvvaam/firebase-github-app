@@ -13,8 +13,8 @@ import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
 //firebase
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
 
 //components
 import Home from "./pages/Home";
@@ -25,6 +25,9 @@ import { UserContext } from "./context/UserContext";
 import Footer from "./layout/Footer";
 import Header from "./layout/Header";
 
+import firebaseConfig from "./Config/FirebaseConfig";
+//init firebase
+firebase.initializeApp(firebaseConfig);
 
 const App=()=> {
 
