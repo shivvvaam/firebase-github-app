@@ -1,42 +1,56 @@
-import React,{useState,useContext} from "react";
+import React, { useState, useContext } from "react";
 import {
     Collapse,
     Navbar,
     NavbarToggler,
     NavbarBrand,
-    Nav,NavItem,NavLink,NavbarText
+    Nav, NavItem, NavLink, NavbarText
 } from "reactstrap";
 
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
-const Header =() =>{
-return(
-    <Navbar color="info" light expand="md">
-        <NavbarBrand><Link to="/" className="text-white text-decoration-none">gitfire App</Link></NavbarBrand>
-        <NavbarToggler />
-        <Collapse navbar>
-        <Nav className="ms-auto"  navbar>
-            <NavItem>
-                <NavLink className="text-white">
-                    Signup
-                </NavLink>
-            </NavItem>
-            <NavItem>
-                <NavLink className="text-white">
-                    Signin
-                </NavLink>
-            </NavItem>
-            <NavItem>
-                <NavLink className="text-white">
-                    Logout
-                </NavLink>
-            </NavItem>
-        </Nav>
-        </Collapse>
+const Header = () => {
+    const context = useContext(UserContext);
 
-    </Navbar>
-);
+    const [isOpen, setIsOpen] = useState(false)
+
+    const toggle = () => setIsOpen(!isOpen);
+
+    return (
+        <Navbar color="info" light expand="md">
+            <NavbarBrand><Link to="/" className="text-white text-decoration-none">gitfire App</Link></NavbarBrand>
+            <NavbarText className="text-white">{
+                context.user?.email ? context.user.email : ""
+            }</NavbarText>
+            <NavbarToggler onClick={toggle} />
+            <Collapse isOpen={isOpen} navbar>
+                <Nav className="ms-auto" navbar>
+                    {/* Conditional rendering if user present  then this other wise that */}
+                    {
+                        context.user ? (
+                            <NavItem>
+                                <NavLink tag={Link} to="/" className="text-white">Logout</NavLink>
+                            </NavItem>
+                        ) :
+                            (
+                                <>
+                                    <NavItem>
+                                        <NavLink tag={Link} to="/" className="text-white">Signup</NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink tag={Link} to="/" className="text-white">Signin</NavLink>
+                                    </NavItem>
+                                </>
+                            )
+                    }
+
+
+                </Nav>
+            </Collapse>
+
+        </Navbar>
+    );
 };
 
 export default Header;
