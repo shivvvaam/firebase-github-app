@@ -58,24 +58,24 @@ const Signup = () => {
                         <Form onSubmit={handleSubmit}>
                             <CardHeader className=''>Signup here</CardHeader>
                             <CardBody>
-                            <div class="mb-3">
-                                <FormGroup row>
-                                
-                                    <Label for='email' sm={3}>
-                                        Email
-                                    </Label>
-                                    <Col sm={9}>
-                                        <Input
-                                            type='email'
-                                            name='email'
-                                            id='email'
-                                            placeholder='provide your email'
-                                            value={email}
-                                            onChange={e => setEmail(e.target.value)}
-                                        />
-                                    </Col>
-                                    
-                                </FormGroup></div>
+                                <div class="mb-3">
+                                    <FormGroup row>
+
+                                        <Label for='email' sm={3}>
+                                            Email
+                                        </Label>
+                                        <Col sm={9}>
+                                            <Input
+                                                type='email'
+                                                name='email'
+                                                id='email'
+                                                placeholder='provide your email'
+                                                value={email}
+                                                onChange={e => setEmail(e.target.value)}
+                                            />
+                                        </Col>
+
+                                    </FormGroup></div>
                                 <FormGroup row>
                                     <Label for='password' sm={3}>
                                         Password
@@ -94,9 +94,9 @@ const Signup = () => {
                             </CardBody>
                             <CardFooter>
                                 <div className="d-grid gap-2">
-                                <Button type='submit' block color='primary'>
-                                    Sign Up
-                                </Button></div>
+                                    <Button type='submit' block color='primary'>
+                                        Sign Up
+                                    </Button></div>
                             </CardFooter>
                         </Form>
                     </Card>
